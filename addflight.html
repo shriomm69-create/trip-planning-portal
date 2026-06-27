@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Flight - Yaatra Plan</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #f4f7f9; padding: 20px; }
+        
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #2c5e85; margin-bottom: 20px; text-align: center; }
+        
+        input, button { width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; }
+        button { background-color: #2c5e85; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #f39c12; }
+
+        .flight-card { background: #fff; padding: 15px; margin-top: 15px; border-left: 5px solid #2c5e85; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .flight-card h3 { color: #2c5e85; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Search Flights</h1>
+    <input type="text" id="from" placeholder="From (e.g. Delhi)">
+    <input type="text" id="to" placeholder="To (e.g. Goa)">
+    <input type="date" id="date">
+    <button onclick="searchFlights()">Search Flights</button>
+
+    <div id="results"></div>
+</div>
+
+<script>
+    function searchFlights() {
+        const from = document.getElementById('from').value;
+        const to = document.getElementById('to').value;
+        const resultsDiv = document.getElementById('results');
+        
+        if(from === "" || to === "") {
+            alert("Please enter both cities!");
+            return;
+        }
+
+        resultsDiv.innerHTML = `
+            <div class="flight-card">
+                <h3>IndiGo Flight: ${from} to ${to}</h3>
+                <p>Price: ₹4,500 | Dep: 10:30 AM</p>
+            </div>
+            <div class="flight-card">
+                <h3>Air India: ${from} to ${to}</h3>
+                <p>Price: ₹5,200 | Dep: 02:00 PM</p>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>

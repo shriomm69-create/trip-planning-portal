@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Hotel - Yaatra Plan</title>
+    <style>
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #f4f7f9; padding: 20px; }
+        
+    
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #2c5e85; margin-bottom: 20px; text-align: center; }
+        
+        input, button { width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; }
+        button { background-color: #2c5e85; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #f39c12; }
+
+
+        .hotel-card { background: #fff; padding: 15px; margin-top: 15px; border-left: 5px solid #2c5e85; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .hotel-card h3 { color: #2c5e85; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Find Your Hotel</h1>
+    <input type="text" id="city" placeholder="Enter City (e.g. Goa)">
+    <input type="date" id="date">
+    <button onclick="searchHotels()">Search Budget Hotels</button>
+
+    <div id="results"></div>
+</div>
+
+<script>
+    function searchHotels() {
+        const city = document.getElementById('city').value;
+        const resultsDiv = document.getElementById('results');
+        
+        if(city === "") {
+            alert("Please enter a city!");
+            return;
+        }
+
+        // Logic: Search karne par niche results show honge
+        resultsDiv.innerHTML = `
+            <div class="hotel-card">
+                <h3>Hotel Sea View, ${city}</h3>
+                <p>Price: ₹1,500/night (Budget Friendly)</p>
+            </div>
+            <div class="hotel-card">
+                <h3>Green Valley Inn, ${city}</h3>
+                <p>Price: ₹1,200/night (Budget Friendly)</p>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>

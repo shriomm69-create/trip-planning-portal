@@ -1,0 +1,43 @@
+ <!DOCTYPE html>
+ <html>
+    <head>
+        <title>current trip</title>
+        <style>
+            .trip-cards { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .card { background: white; padding: 15px; border-radius: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .img-box { height: 150px;  border-radius: 10px; margin-bottom: 10px; background-image:url('goa.png');background-size: cover; cursor: pointer; }
+        .img-box2 { height: 150px;  border-radius: 10px; margin-bottom: 10px; background-image:url('himalaya.png'); background-size: cover; cursor:pointer; }
+        .container { max-width: 800px; margin: auto; }
+        .back-btn { display: inline-block; margin-bottom: 20px; padding: 10px; background: #f39c12; color: white; text-decoration: none; border-radius: 5px; }
+         @media only screen and (min-width: 768px) {
+    
+            .trip-cards { grid-template-columns: 1fr 1fr; }
+            
+            
+        }  
+        </style>
+    </head>
+ </html>
+ <div class="container">
+        <a href="yaatraPLAN.html" class="back-btn">← Back to Dashboard</a>
+
+ <div class="trip-cards">
+             
+            <div class="card">
+                <div class="img-box"></div>
+                <h4>Goa Beach Retreat</h4>
+                <p>Dates: Oct 15-20</p>
+                 <a href="goa.html">
+                <button class="btn-view" >View Details</button>
+                </a>
+            </div>
+            <div class="card">
+                <div class="img-box2"></div>
+                <h4>Himalayan Adventure</h4>
+                <p >Dates: Nov 2-8</p>
+                 <a href="himalayan.html">
+                <button class="btn-view">View Details</button>
+                </a>
+            </div>
+        </div>
+        </div>

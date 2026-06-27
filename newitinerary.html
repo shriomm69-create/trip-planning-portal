@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Itinerary - Yaatra Plan</title>
+    <style>
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #f4f7f9; padding: 20px; }
+        
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #2c5e85; margin-bottom: 20px; text-align: center; }
+        
+        input, textarea, button { width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; }
+        textarea { height: 100px; resize: none; }
+        button { background-color: #2c5e85; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #f39c12; }
+
+    
+        .itinerary-card { background: #fff; padding: 15px; margin-top: 15px; border-left: 5px solid #2c5e85; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Create New Itinerary</h1>
+    <input type="text" id="tripName" placeholder="Trip Name (e.g. Goa Vacation)">
+    <textarea id="details" placeholder="Enter trip details/schedule..."></textarea>
+    <button onclick="saveItinerary()">Save Itinerary</button>
+
+    <div id="results"></div>
+</div>
+
+</body>
+</html>
