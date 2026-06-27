@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover; 
+    display: block;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.05); 
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="gallery-container">
+  <div class="gallery-item"><a href="pic3.jpeg"><img src="pic3.jpeg" alt="Friend 1"></a></div>
+  <div class="gallery-item"><a href="pic2.jpeg"><img src="pic2.jpeg" alt="Friend 2"></a></div>
+  <div class="gallery-item"><a href="pic4.jpeg"><img src="pic4.jpeg" alt="Friend 3"></a></div>
+  <div class="gallery-item"><a href="pic1.jpeg"><img src="pic1.jpeg" alt="Friend 4"></a></div>
+</div>
+
+</body>
+</html>

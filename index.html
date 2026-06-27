@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaatra Plan Dashboard</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #f4f7f9; }
+
+        /* Navbar */
+        .navbar { display: flex; justify-content: space-between;  background: white;
+  background-color:aliceblue;
+  align-items:center;
+  top:0;
+  width:100%;
+  padding:1px;
+  text-indent:60px;
+  text-shadow: 2px 2px 2px #0000006e;
+  }
+  
+  .header ul{
+  display:flex;
+  justify-content:center;
+  list-style-type:none;
+  gap:20px;
+  }  
+
+ li a{
+  color:rgba(5, 5, 5, 0.979);
+  padding:16px;
+  text-decoration:none;
+      } 
+
+  li a:hover {
+     color: rgb(4, 176, 255);
+     text-decoration:underline;
+
+    }
+    .table:hover{ transform: scale(1.05); box-shadow:2px 4px 9px #000000;}
+
+ .logo-img { height: 40px;
+              width: 40px; 
+             border-radius: 60%;  
+             position:absolute;left:20px;
+             box-shadow:3px 4px 5px rgba(0, 0, 0, 0.397);
+
+            }
+            
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px); 
+  }
+
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  
+  input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+  }
+
+  
+  button.submit-btn {
+    width: 96%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  button.submit-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+  }
+         
+        .nav-links { display: none; } 
+
+       .btn-create { 
+            background-color: #2c5e85; 
+            color: white;
+            display: flex;
+            justify-content:space-between;
+            padding: 5px;
+            border: none; 
+            border-radius: 8px; 
+            position:absolute;
+            right:20px;
+            font-size:20px;
+            box-shadow: 7px 7px 10px #000000af;
+        }
+        .btn-create:hover{transform: scale(1.05); cursor:pointer; }
+
+        .hero { background: #2c5e85; color: white; padding: 40px 20px; text-align: center; background-image:url('back.png'); background-repeat:no-repeat; background-size: cover; text-shadow:10px 10px 10px #000000}
+        .hero input { width: 100%; max-width: 400px; padding: 12px; border-radius: 20px; border: none; margin-top: 15px;}
+        .hero table{margin:auto; }
+        
+        .container { display:flex;}
+        .sidebar {  width: 200px; }
+        .sidebar button {display:block; width: 100%; padding: 10px; margin-bottom: 5px;}
+        .content-area{flex-grow:1; padding:20px;}
+        .tab-content { display:none; text-indent: 20px; }
+        .active { display: block}
+        .button2{background-color: white; border-radius: 30px;  margin: 15px;}
+        .button2:hover{ transform:scale(1.05); color:white; background-color:#2c5e85; box-shadow: 4px 7px 9px #000000;}
+        .button2:active{ color:#973434; background-color:#2c5f8583 ;}
+
+        .trip-cards { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .card { background: white; padding: 15px; border-radius: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .img-box { height: 150px;  border-radius: 10px; margin-bottom: 10px; background-image:url('goa.png');background-size: cover; cursor: pointer; }
+        .img-box2 { height: 150px;  border-radius: 10px; margin-bottom: 10px; background-image:url('himalaya.png'); background-size: cover; cursor:pointer; }
+
+        .btn-view { background: #f39c12; color: white; border: none; padding: 10px; width: 100%; border-radius: 8px; margin-top: 10px; }
+        
+
+        .quick-start { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .quick-item { background: white; box-shadow:5px 6px 9px #000000bd; padding: 15px; text-align: center; border-radius: 10px; font-size: 12px; }
+        .quick-item:hover{  transform:scale(1.05); background-color:  #e6be0f8c;}
+        .quick-item:active{background-color: #f39c12;}
+        .footer {background-color: #777; padding: 10px;text-align: left;color: white;display:flex;justify-content:space-between; align-items:center;
+}
+
+        
+
+
+        @media only screen and (min-width: 768px) {
+            .nav-links { display: flex; }
+            .trip-cards { grid-template-columns: 1fr 1fr; }
+            .sidebar { flex-direction: column; width: 200px; overflow-x: visible; }
+            .dashboard { display: flex; }
+            .quick-start { grid-template-columns: repeat(4, 1fr); }
+            .quick-item{ overflow:visible;}
+            
+        }  
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <img src="logo.png" class="logo-img" alt="Logo">
+     <h1><i><sup>Yaatra</sup></i>PLAN</h1>
+    <button class="btn-create" id="signInBtn">Sign In</button>
+<div id="signInModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Login</h2>
+    <input type="text" placeholder="Email">
+    <input type="password" placeholder="Password">
+  <a href=""  <button>Submit</button>
+  </div>
+</div>
+</nav>
+
+<header class="header">
+    <ul>
+         <li ><a  href="index.html">Home</a></li>
+            <li><a href="destination.html">Destination</a></li>
+            <li><a href="pic.html">About</a></li>
+        </ul> 
+    </header>
+
+<header class="hero">
+    <h1 >WHERE TO NEXT, ALICE?</h1>
+    
+    <table  >
+        <td >
+    <input class="table" style="font-size:30px; border:4px solid rgba(0, 0, 0, 0.171); border-radius:20px; " type="search" id="browsers" placeholder="Search(e.g. Noida)">
+    </td>
+    <td>
+    <input  style="font-size:30px; border:4px solid rgba(0, 0, 0, 0.322); border-radius:px;" type="date"  type="date" placeholder="Date">
+    </td>
+    <td>
+    <input style="font-size:30px; border:4px solid rgba(0, 0, 0, 0.363); border-radius:px;" type="number" placeholder="guests" min="1" max="50">
+    </td>
+    <td>
+    <input class="table" style="font-size:18px" type="submit" value="search">
+    </td>
+    </tr>
+    </table>
+    
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+       <button  class="button2" onclick="showTab('trip')"> 📍 Current Trips</button>
+       <button class="button2" onclick="showTab('milestones')" >📅 Milestones</button>
+       <button class="button2" onclick="showTab('budget')" >💶 Budget</button>
+        <button class="button2" onclick="showTab('team')">👥 Team</button>
+    </aside>
+     <div class="content-area">
+        <div id="trip" class="tab-content active2">
+            <h1>Current Trip</h1>
+            <br>
+             <div class="trip-cards">
+             
+            <div class="card">
+                <div class="img-box"></div>
+                <h4>Goa Beach Retreat</h4>
+                <p>Dates: Oct 15-20</p>
+                 <a href="goa.html">
+                <button class="btn-view" >View Details</button>
+                </a>
+            </div>
+            
+            <div class="card">
+                <div class="img-box2"></div>
+                <h4>Himalayan Adventure</h4>
+                <p >Dates: Nov 2-8</p>
+                 <a href="himalayan.html">
+                <button class="btn-view">View Details</button>
+                </a>
+            </div>
+
+        </div>
+        </div>
+        <div id="milestones" class="tab-content">
+            <h1> milestones</h1>
+            <p> my name is shriom mishra</p>
+        </div>
+
+        <div id="budget" class="tab-content">
+            <h1>budget</h1>
+            <p> my name is shriom mishra</p>
+        </div>
+
+        <div id="team" class="tab-content">
+            <h1>Team</h1>
+            <p>"Arre deviyon! Utha le re baba, utha le! Mereko nahi, ise project ko utha le! 😭🙏
+Matlab group mein itna bhayankar sannata hai, mujhe lag raha hai main galti se kisi dhyan-kendra (meditation centre) mein add ho gaya hoon. Bhai... mera matlab hai behno, kya engineers banogi re tum log? 🤦‍♂️
+Ekdum chup chap baithe hain sab... lagta hai apne master-plans ko 'Zor zor se bolke logo ko schemein bata de' wale darr se chupa ke rakha hai! Agar dimaag mein sach mein 'Error 404: Ideas Not Found' chal raha hai, toh kam se kam chat mein zinda hone ka saboot hi de do. Varna final submission ke din examiner pakka apni is over-silence ka '50 Rupya (marks) kaat lega'! 🎬🤐
+Chup mat raho re baba, thoda toh Hera Pheri karo dimaag ke saath, aur ideas bahar nikalo!" </p>
+
+        </div>
+    
+        </div>
+        </div>
+
+
+        <div class="quick-start">
+           <a href="newitinerary.html" style="color:black; text-decoration: none;" > <div class="quick-item">📄 New Itinerary</div></a>
+           <a href="addflight.html"  style="color:black; text-decoration: none;"><div class="quick-item">✈️ Add Flight</div></a>
+           <a href="addhotel.html"  style="color:black; text-decoration: none;"><div class="quick-item">🏨 Add Hotel</div></a>
+           <a href="activity.html"  style="color:black; text-decoration: none;"><div class="quick-item">🔍 Find Activities</div></a>
+        </div>   
+    </section>
+    </main>
+
+<footer class="footer">
+  <div>
+  <p><a href="#about">About Us:</a>&#9474;<a href="#contact">Contact US:</a>&#9474;<a href="#privacy">Privacy Policy:</a>&#9474;</p>
+  </div>
+<div class="icon">
+  <a href="https://youtube.com/@shriom-q4r1f?si=sdPXkF-6K-tAFbCo"><img src="youtube-icon.JPG" width="30px" height="20px"></a>
+  <a href="https://www.instagram.com/mishra.ji7479?igsh=MXllZzBxeDF6eDM3"><img src="instragram.jpeg" width="30px" height="20px"></a>
+</div>
+
+</footer>
+<script> 
+
+    document.querySelectorAll('.sidebar li').forEach(item => {
+        item.addEventListener('click', function() {
+            document.querySelector('.active').classList.remove('active');
+            this.classList.add('active');
+        });
+    });
+
+    const modal = document.getElementById("signInModal");
+const btn = document.getElementById("signInBtn");
+const closeBtn = document.querySelector(".close");
+
+
+btn.onclick = () => modal.style.display = "block";
+
+closeBtn.onclick = () => modal.style.display = "none";
+
+window.onclick = (event) => {
+  if (event.target == modal) modal.style.display = "none";
+} 
+
+
+  function showTab(tabId) {
+    
+    document.querySelectorAll('.tab-content').forEach(tab => {
+      tab.classList.remove('active');
+    });
+
+    document.getElementById(tabId).classList.add('active');
+  }
+
+</script>
+
+
+</body>
+</html>
